@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color:khaki;
+    }
+
+    table {
+        margin: 0 auto;
+    }
+    
+    td {
+        border: none;
+        padding: 60px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    label {
+        width: 100%;
+        font-weight: bold;
+        color: #333;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type="radio"],
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    .radio-group {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+    
+    input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <form id="registrationForm" onsubmit="return validateRegistration();" method="post" action="">
+                    <label for="name"> First Name</label>
+                    <input type="text" id="first_name" name="first_name"><br>
+                    <label for="name"> Last Name</label>
+                    <input type="text" id="last_name" name="last_name"><br>
+                    <label for="email"> Email</label>
+                    <input type="email" id="email" name="email"><br>
+                    <label for="country">Country</label>
+                    <select id="country" name="country">
+                        <option value="">Select Country</option>
+                        <option value="india">India</option>
+                        <option value="usa">USA</option>
+                        <option value="canada">Canada</option>
+                        <option value="uk">UK</option>
+                        <option value="other">Other</option>
+                    </select><br>
+                    <label for="address">Address</label>
+                    <textarea rows="4" cols="20" id="address" name="address" ></textarea><br>
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                    </div><br>
+                    <label>Agree to Terms</label>
+                    <input type="checkbox" id="terms" name="terms" value="agree" >
+                    <label for="terms">I agree to the <a href="terms.html" target="_blank">Terms and Conditions</a></label><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <script type="text/javascript">
+        function validateRegistration() {
+            if (document.getElementById("first_name").value === "") {
+                alert("Please enter first name.");
+                return false;
+            }else if (document.getElementById("last_name").value === "") {
+                alert("Please enter last name.");
+                return false;
+            } else if (document.getElementById("email").value === "") {
+                alert("Please enter email.");
+                return false;
+            } else if (document.getElementById("country").value === "") {
+                alert("Please select country.");
+                return false;
+            } else if (document.getElementById("address").value === "") {
+                alert("Please enter address.");
+                return false;
+            } else if (!document.getElementById("male").checked && !document.getElementById("female").checked) {
+                alert("Please select gender.");
+                return false;
+            } else if (!document.getElementById("terms").checked) {
+                alert("Please agree to the terms and conditions.");
+                return false;
+            } 
+            return true;
+        }
+    </script>
+</body>
+</html>
